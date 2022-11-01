@@ -1,2 +1,1 @@
-# first-git-project
-Aksharam web portal
+# Book Review Blog
