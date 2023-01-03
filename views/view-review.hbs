@@ -1,0 +1,33 @@
+<section class="md:px-12 px-4 md:mt-20 mt-24 mb-12 w-100 md:w-100 lg:w-4/5 mx-auto">
+  <div class="grid md:grid-cols-1 lg:grid-cols-1 sm:grid-cols-1 grid-cols-1 gap-4" >
+
+    <!--ARTICLE -->
+    <div class="mb-6 flex gap-5">
+      <div class="h-72 w-1/3">
+        <img
+          class="lg:h-72 md:h-72 w-full rounded-md lg:object-cover md:object-cover"
+          src="/static/review-images/{{reviews._id}}.jpg"
+        />
+      </div>
+      <div class="flex flex-col h-full justify-between w-2/3">
+        <div>
+          <p class="capitalize tracking-wide text-blue-500">{{reviews.catagory}}</p>
+          <h1 class="text-4xl mb-2 font-bold">{{reviews.book_name}}</h1>
+          <p class="font-bold text-gray-800">{{reviews.author}}</p>
+          <div class="text-gray-500 review mt-4">
+            {{{reviews.markdown}}}
+          </div>
+        </div>
+        <div>
+          <small class="font-small text-gray-600">Reviewed by
+            <span class="font-bold">{{reviews.reviewer}}</span>
+          </small>
+          <p class="text-xs self-end font-bold text-gray-600">{{reviews.date}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 break-words markdown">{{{reviews.markdown}}}</div>
+    
+
+  </div>
+</section>

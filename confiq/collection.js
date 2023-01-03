@@ -1,3 +1,3 @@
 module.exports = {
-    ARTICLE_COLLECTION:'article'
+    REVIEW_COLLECTION:'review'
 }

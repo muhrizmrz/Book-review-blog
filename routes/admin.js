@@ -5,27 +5,27 @@ const fs = require('fs')
 const db = require('../confiq/connection')
 const objectId = require('mongodb').ObjectId
 
-var add_article = require('../helpers/article_models')
+var add_review = require('../helpers/review_models')
 
 /* GET home page. */
 router.get('/', async(req, res) =>{
-  let articles = await db.get().collection(collection.ARTICLE_COLLECTION).find().sort({date:-1}).toArray()
-  //console.log(articles)
-  res.render('admin/home',{articles:articles})
+  let reviews = await db.get().collection(collection.REVIEW_COLLECTION).find().sort({date:-1}).toArray()
+  console.log(reviews)
+  res.render('admin/home',{reviews:reviews})
 });
 
 /* GET new article form. */
-router.get('/add-article',(req,res)=>{
-  res.render('admin/add_article')
+router.get('/add-review',(req,res)=>{
+  res.render('admin/add_review')
 })
 
 /* POST new article */
-router.post('/add-article',(req,res)=>{
-  add_article.addArticle(req.body).then((result)=>{
-    console.log(req.files)
+router.post('/add-review',(req,res)=>{
+  add_review.addReview(req.body).then((result)=>{
+    console.log(req.body)
     if(req.files.image){
       let image  = req.files.image
-      image.mv('public/article-images/'+result.insertedId.toString()+'.jpg',(err,done)=>{
+      image.mv('public/review-images/'+result.insertedId.toString()+'.jpg',(err,done)=>{
         if(!err){
           console.log(result)  
         }else{
@@ -39,37 +39,37 @@ router.post('/add-article',(req,res)=>{
 
 /* GET view article */
 router.get('/:id',async(req,res)=>{
-  var articleToBeView = await db.get().collection(collection.ARTICLE_COLLECTION).findOne({_id:objectId(req.params.id)})
-  res.render('admin/view-article',{article:articleToBeView})
+  var reviewToBeView = await db.get().collection(collection.REVIEW_COLLECTION).findOne({_id:objectId(req.params.id)})
+  res.render('admin/view-review',{review:reviewToBeView})
 })
 
 /* GET edit aritcle page */
 router.get('/edit/:id',async(req,res)=>{
   var _id = req.params.id
-  let articleToBeEdit = await db.get().collection(collection.ARTICLE_COLLECTION).findOne({_id:objectId(_id)})
+  let reviewToBeEdit = await db.get().collection(collection.REVIEW_COLLECTION).findOne({_id:objectId(_id)})
   //console.log(articleToBeEdit)
-  res.render('admin/edit_article',{article:articleToBeEdit})
+  res.render('admin/edit_review',{review:reviewToBeEdit})
 })
 
 /* POST edit article */
+
 router.post('/edit/:id',(req,res)=>{
-  add_article.updateArticle(req.params.id,req.body).then(()=>{
-    var path = 'public/article-images/'+req.params.id+'.jpg'
-    fs.unlink(path, function (err) {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log("File removed:", path);
-      }
-    });
-    let editedImage = req.files.image
-    editedImage.mv('public/article-images/'+req.params.id+'.jpg')
+  add_review.updateReview(req.params.id,req.body).then(()=>{
+    var path = 'public/review-images/'+req.params.id+'.jpg'
+    console.log(req.files)
+    if(req.files){
+      fs.unlink(path, function (err) {
+        err ? console.error(err) : console.log("File removed:", path)
+      });
+      let editedImage = req.files.image
+      editedImage.mv('public/review-images/'+req.params.id+'.jpg')
+    }
     res.redirect('/admin/'+req.params.id)
   })
 })
 
 router.get('/delete/:id',(req,res)=>{
-  add_article.deleteArticle(req.params.id).then(()=>{
+  add_review.deleteArticle(req.params.id).then(()=>{
     res.redirect('/admin')
   })
 })

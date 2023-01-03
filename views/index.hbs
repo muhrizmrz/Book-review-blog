@@ -1,69 +1,71 @@
-<section class="md:w-full sm:w-full lg:h-full md:h-screen sm:h-screen h-full mt-24 bg-cover bg-center bg-opacity-50"
-    style="background-image: url('https://images.unsplash.com/photo-1627374391724-4285ba5193b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')">
-    <div class="grid md:grid-cols-2 sm:grid-cols-2 grid-cols-1 bg-black h-full bg-opacity-50">
-        <div class="w-3/4 mx-auto p-14 text-white order-last md:order-first sm:order-first sm:pr-16 lg:mt-24 md:mt-24">
-            <h2 class="text-5xl font-bold text-center lg:text-right md:text-right" data-aos="fade-up" data-aos-duration="1000"
-                data-aos-easing="ease-in-out" style="font-family: 'ge-bold';">الحديث الشريف في الهند</h2>
-                <p class="font-bold text-lg leading-10 mt-4 tracking-wide text-center lg:text-right md:text-right" style="font-family: ge-medium;">هذا العدد يضيئ القناديل المخمدة للحديث النبوي في الهند
-                     الميمونة مع تصوير نشأته وتطوره فيها من 
-                      مساهمات وتدريس للأعلام النبلاء الذين أفنوا حياتهم لخدمة الإسلام والحديث النبوي</p>
-        </div>
-        <div class="lg:w-4/6 md:w-3/4 sm:w-3/4 w-4/5 lg:5/6 md:h-5/6 sm:h-5/6 mx-auto my-auto">
-            <div class="text-white relative lg:h-72 md:h-80 sm:h-80 mx-auto pt-8 mt-8">
-                <img src="/static/images/mock_1.png"
-                    class="h-full md:scale-125 scale-100 w-42 object-cover transition-all duration-500 ease-in-out transform lg:hover:scale-150 hover:scale-125" />
-            </div>
-        </div>
+{{#each coverReview}}
+<section id="hero" class="flex flex-row space-x-6 py-6">
+    
+    <div class="w-2/6">
+        <img class="rounded-lg hover:scale-110 transition duration-500 w-[98%] cursor-pointer"
+            src="/static/review-images/{{this._id}}.jpg" alt="book_cover" />
     </div>
-</section>
-
-<section id="latest_articles" class="p-8 lg:w-5/6 mx-auto">
-    <div class="grid md:grid-cols-3 grid-cols-1 gap-4">
-        {{#each recentArticles}}
-        <a href="articles/{{this._id}}" class="bg-white rounded-xl">
-            <div class="bg-cover bg-center bg-opacity-50 rounded-xl h-full grid grid-cols-1 overflow-hidden border-4 hover:border-4 hover:border-blue-600"
-                style="background-image: url('/static/article-images/{{this._id}}.jpg');">
-                <div class="bg-black p-6 bg-opacity-70 hover:bg-opacity-80 h-full flex justify-self-center w-full">
-                    <div class="my-auto">
-                        <h2 class="text-2xl my-1 text-right capitalize font-bold text-white hover:text-blue-200">
-                            {{this.topic}}
-                        </h2>
-                        <p class="mb-8 "><small class="font-small ml-6 font-bold text-blue-400">{{this.author}}</small>
-                        </p>
-                        <button class="p-2 mt-2 rounded-full px-5 shadow-lg bg-white text-blue-500 font-bold">إقرأ المزيد</button>
-                    </div>
-
-                </div>
-            </div>
+    <div class="flex flex-col justify-center w-4/6">
+        <a href="/reviews/{{this._id}}">
+            <h1 class="uppercase text-3xl font-bold text-slate-800 cursor-pointer hover:text-slate-600">{{this.book_name}}</h1>
         </a>
-        {{/each}}
+        <p class="italic text-md text-gray-600">{{this.author}}</p>
 
-
+        <div class="text-gray-700 mt-3 review">{{{this.markdown}}}
+            
+        </div>
+        <a href="/reviews/{{this._id}}"><span class="text-blue-500 hover:text-blue-400">Read More</span></a>
+        <p class="text-slate-600 mt-3">Reviewed by <span class="text-slate-800 font-semibold">{{this.reviewer}}</span></p>
+        <!--<p class="text-gray-900 mt-3 text-xs"><span><i class="fa-solid fa-calendar-days mr-2"></i></span>{{this.date}}</p>-->
     </div>
+   
+</section>
+ {{/each}}
+
+<h2 class="text-3xl font-bold my-4">Recently added</h2>
+<section class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1  gap-4 review_main">
+    {{#each reviews}}
+    <article class="flex flex-row w-full space-x-3 reviews border-b py-3">
+        <div class="xl:w-2/5 md:w-2/5 w-1/5">
+            <img class="rounded-lg border hover:scale-110 transition duration-500 w-[98%]  cursor-pointer"
+                src="/static/review-images/{{this._id}}.jpg" alt="book_cover" />
+        </div>
+        <div class="flex flex-col justify-start xl:w-3/5 md:w-3/5 w-4/5 relative">
+            <h1 class="capitalize text-md font-bold text-slate-800 cursor-pointer hover:text-slate-600">
+                <a href="/reviews/{{this._id}}">{{this.book_name}}</a>
+            </h1>
+            <p class="italic text-md text-gray-600">{{this.author}}</p>
+            
+            <div class="break-words text-sm text-gray-700 mt-3 review">{{{this.markdown}}}</div>
+            <a href="/reviews/{{this._id}}"><p class="text-blue-500 text-sm hover:text-blue-400">Read More</p></a>
+            <p class="text-slate-600 mt-3 text-sm">Reviewed by <span class="text-slate-800 font-semibold">{{this.reviewer}}</span></p>
+            <!--<p class="text-gray-900 mt-1 font-semibold text-[0.85rem]"><span><i class="fa-solid fa-calendar-days mr-1"></i></span>{{this.date}}-->
+            </p>
+        </div>
+    </article>
+    {{/each}}
 </section>
 
-<div class="w-full h-auto mb-6 bg-gray-200 p-4">
-    <div class="w-3/4 mx-auto">
-
-    <img src="/static/images/web_cover.jpg" class="w-full h-full" />
-    </div>
-</div>
-
-<div class="w-full h-screen backdrop-filter backdrop-blur-2xl hidden fixed top-0 z-50 transition-all duration-1000 ease-linear" id="launch_page">
-    <div class="w-3/4 h-5/6 mx-auto mt-16 bg rounded-3xl overflow-hidden shadow-xl bg-cover bg-center bg-opacity-50"  style="background-image: url('/static/images/background_1.jpg')">
+<div class="w-full h-screen backdrop-filter backdrop-blur-2xl hidden fixed top-0 z-50 transition-all duration-1000 ease-linear"
+    id="launch_page">
+    <div class="w-3/4 h-5/6 mx-auto mt-16 bg rounded-3xl overflow-hidden shadow-xl bg-cover bg-center bg-opacity-50"
+        style="background-image: url('/static/images/background_1.jpg')">
         <div class="bg-black bg-opacity-70 h-full p-4">
-            <h1 class="text-3xl text-center font-extrabold text-gray-200" style="font-family: 'Cairo';">بسم الله الرحمن الرحيم</h1>
+            <h1 class="text-3xl text-center font-extrabold text-gray-200" style="font-family: 'Cairo';">بسم الله الرحمن
+                الرحيم</h1>
             <div class="bg-gray-50 border-8 border-blue-400 mt-8 rounded-full w-2/4 mx-auto">
                 <img src="/static/images/midad_logo.png" class="w-52 h-52 mx-auto" />
             </div>
             <div class="w-2/12 mx-auto animate-bounce hover:animate-pulse mt-12" id="launch_button">
-                    <i class="fa-solid fa-rocket bg-blue-500 rounded-full p-8 text-4xl mr-6 text-white cursor-pointer border-8 border-transparent transition-all hover:border-6 hover:border-blue-300 hover:shadow-neutral-100 hover:drop-shadow-2xl hover:bg-indigo-500"></i>
+                <i
+                    class="fa-solid fa-rocket bg-blue-500 rounded-full p-8 text-4xl mr-6 text-white cursor-pointer border-8 border-transparent transition-all hover:border-6 hover:border-blue-300 hover:shadow-neutral-100 hover:drop-shadow-2xl hover:bg-indigo-500"></i>
             </div>
         </div>
     </div>
 </div>
 
-<div class="w-full h-screen fixed bg-cover bg-center -top-96 z-50 transition-all duration-1000 ease-linear hidden" id="launched" style="background-image: url('/static/images/celebration3.png');">
+<div class="w-full h-screen fixed bg-cover bg-center -top-96 z-50 transition-all duration-1000 ease-linear hidden"
+    id="launched" style="background-image: url('/static/images/celebration3.png');">
     <div class="w-1/2 h-1/2 mx-auto mt-24 text-center">
         <h1 class="text-3xl text-center font-extrabold text-gray-800" style="font-family: 'Cairo';"></h1>
     </div>

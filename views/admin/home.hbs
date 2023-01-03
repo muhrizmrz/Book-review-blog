@@ -1,19 +1,19 @@
 <section class="mt-24 p-4 px-6">
     <div class="text-center">
-        <a href="/admin/add-article" class=""><button
-                            class="px-5 w-full md:w-48 py-2 bg-blue-500 text-white rounded text-center">New Article + </button></a>
+        <a href="/admin/add-review" class=""><button
+                            class="px-5 w-full md:w-48 py-2 bg-blue-500 text-white rounded text-center">New Review + </button></a>
     </div>
     
     <div class="md:w-3/4 w-full p-4 mx-auto">
-        {{#each articles}}
+        {{#each reviews}}
         <div class="flex gap-12 m-3 bg-white p-5 justify-between">
             <div class="w-1/4 md:flex hidden">
-                <img src="/static/article-images/{{this._id}}.jpg" class="object-cover">
+                <img src="/static/review-images/{{this._id}}.jpg" class="object-cover">
             </div>
 
             <div class="my-auto w-1/3">
                 <p class="font-medium font-bold capitalize tracking-wide text-blue-500">{{this.catagory}}</p>
-                <a href="admin/{{this._id}}"><h2 class="text-xl font-bold mb-2">{{this.topic}}</h2></a>
+                <a href="admin/{{this._id}}"><h2 class="text-xl font-bold mb-2">{{this.book_name}}</h2></a>
                 <small class="font-bold text-gray-600">By: {{this.author}}</small>
             </div>
             <div class="my-auto ">
