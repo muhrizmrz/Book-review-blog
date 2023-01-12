@@ -5,5 +5,11 @@ $(document).ready(function(){
     var review = $("input[name|='review'").val()
     var image = $("input[name|='image")[0]
     var errorMsg = ''
-    
+    $('#add_review').submit((e)=>{
+        if(image.files.length == 0){ 
+            e.preventDefault()
+            errorMsg = "Please Upload image"
+            alert(errorMsg)
+        }
+    })
 })
