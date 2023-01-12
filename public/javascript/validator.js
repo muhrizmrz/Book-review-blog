@@ -3,15 +3,7 @@ $(document).ready(function(){
     var author = $("input[name|='author'").val()
     var reviewer = $("input[name|='reviewer'").val()
     var review = $("input[name|='review'").val()
-    var image = $("input[name|='image")
+    var image = $("input[name|='image")[0]
     var errorMsg = ''
-    $('#add_review').submit((e)=>{
-        
-        if(book_name == ''||author == ''||reviewer == ''||review == ''||image.files.length == 0){
-            console.log(`${book_name} ${author} ${reviewer}  ${image.files.length}`)
-            e.preventDefault()
-            errorMsg = "Fill all the fields and upload image"
-            alert(errorMsg)
-        }
-    })
+    
 })
