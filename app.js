@@ -4,6 +4,9 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var { v4:uuidv4 } = require('uuid');
+var hbs = require('hbs')
+var session = require('express-session')
 var logger = require('morgan');
 
 var adminRouter = require('./routes/admin');
@@ -21,8 +24,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+const partialFolder = path.join(__dirname,'views/partials')
+hbs.registerPartials(partialFolder)
 app.use('/static',express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
+app.use(session({secret:uuidv4(),resave:true,saveUninitialized:true,cookie:{maxAge:1000*60*60}}))
 
 // database connection
 db.connect((err)=>{

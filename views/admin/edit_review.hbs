@@ -1,3 +1,5 @@
+{{>admin_header}}
+
 <div class="w-3/4 grid grid-cols-1 mx-auto lg:mt-12 mb-10 border-2 border-gray-200 p-8">
     <div class="grid grid-cols-1 space-y-6">
         <p class="text-gray-400 text-3xl font-bold text-center border-b pb-2">Edit Article</p>
@@ -9,6 +11,10 @@
             <div class="grid grid-cols-1 space-y-2">
                 <label for="review_author" class="font-bold text-lg text-gray-500">Author</label>
                 <input type="text" id="review_author" value="{{review.author}}" name="author" class="text-gray-700 p-2 border bg-white rounded border-gray-300 focus:outline-none focus:bg-blue-100">
+            </div>
+            <div class="grid grid-cols-1 space-y-2">
+                <label for="review_author" class="font-bold text-lg text-gray-500">Reviewer</label>
+                <input type="text" id="reviewer" value="{{review.reviewer}}" name="reviewer" class="text-gray-700 p-2 border bg-white rounded border-gray-300 focus:outline-none focus:bg-blue-100">
             </div>
             <div class="grid grid-cols-1 col-span-2 space-y-2">
                 <label for="review" class="font-bold text-lg text-gray-500">Review</label>
@@ -28,4 +34,4 @@
             <button type="submit" class="p-2 rounded-lg bg-purple-900 text-white w-1/4 hover:bg-purple-700 justify-self-end col-span-2 mt-3">Save</button>
         </form>
     </div>
-    
+</div>

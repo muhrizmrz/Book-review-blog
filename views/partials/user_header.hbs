@@ -1,0 +1,52 @@
+<header class="md:px-44 lg:px-44 px-4 py-4 w-full flex border-b justify-between shadow-2xl bg-white" style="z-index:1;">
+        <a href="/" class="flex items-center">
+            <img src="/static/images/logo.png" class="w-10 h-10" />
+            <h2 class="text-teal-900 font-bold mt-2 ml-2 text-3xl">Al Hamra</h2>
+        </a>
+        <nav class="w-2/6 flex justify-end">
+            <div class="w-full hidden font-bold uppercase md:flex lg:flex justify-between sm:hidden py-2 my-auto text-sm text-gray-700">
+                <a href="/" class="text-right hover:text-blue-800">Home</a>
+                <a href="#" class="text-right hover:text-blue-800">Reviews</a>
+                <a href="#" class="text-right hover:text-blue-800">Blog</a>
+                <a href="#" class="text-right hover:text-blue-800">About</a>
+            </div>
+
+            <div id="sidebar_icon"
+                class="my-auto text-left w-10 justify-self-end lg:hidden md:hidden text-gray-800 text-xl font-semibold cursor-pointer">
+                <div id="menu_button">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="hidden transition-all duration-500 ease-in-out transform" id="menu_close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    <nav class="lg:hidden md:hidden sm:hidden hidden w-full fixed top-16 z-10 transition-all duration-500 ease-in-out transform"
+        id="sidebar_menu">
+        <div class="w-full h-screen grid grid-cols-5">
+
+            <!--BACKGROUND OVERLAY---> 
+            <div class="bg-black opacity-50 col-span-2 relative" id="blank_model">
+
+            </div>
+
+            <div class="pt-12 bg-gray-800 col-span-3 px-8 text-sm text-gray-400">
+                <ul class="">
+                    <li class="py-2 border-gray-500 text-center rounded-md hover:bg-white hover:text-gray-700"><a href="/"
+                            class="cursor-pointer">Home</a></li>
+                    <li class="py-2 border-gray-500 text-center rounded-md hover:bg-white hover:text-gray-700"><a href="#"
+                            class="cursor-pointer">Reviews</a></li>
+                    <li class="py-2 border-gray-500 text-center rounded-md hover:bg-white hover:text-gray-700"><a href="#"
+                            class="cursor-pointer">Blog</a></li>
+                    <li class="py-2 border-gray-500 text-center rounded-md hover:bg-white hover:text-gray-700"><a href="#"
+                            class="cursor-pointer">About</a></li>
+                    </li>
+                </ul>
+            </div>
+            
+
+        </div>
+    </nav>

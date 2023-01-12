@@ -1,6 +1,13 @@
 .h1 {
     color:blue;
 }
+body{
+    font-family: 'Noto Sans Malayalam', sans-serif;
+}
+
+#popup {
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
 .review{
     display: -webkit-box;
@@ -8,6 +15,10 @@
     -webkit-box-orient: vertical;  
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: 'Noto Sans Malayalam', sans-serif;
+}
+.markdown {
+    font-family: 'Noto Sans Malayalam', sans-serif;
 }
 .markdown h1{
     font-size: 1.5rem;

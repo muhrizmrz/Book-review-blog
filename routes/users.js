@@ -5,61 +5,11 @@ const collection = require('../confiq/collection');
 const db = require('../confiq/connection')
 const objectId = require('mongodb').ObjectId
 
-var reviews = [
-  {
-    id: '01',
-    name: 'Battle In The Avenue',
-    author: 'Sean McCutchen',
-    description: 'Battle in the Avenue is a satisfying alternate reality thriller about a future where fuel is more than a luxury.',
-    reviewer: 'MJ Campbell',
-    date: '11/12/22'
-  },
-  {
-    id: '02',
-    name: 'Here There Be Monsters',
-    author: 'Rick Buchanan',
-    description: 'Battle in the Avenue is a satisfying alternate reality thriller about a future where fuel is more than a luxury.',
-    reviewer: 'MJ Campbell',
-    date: '11/12/22'
-  },
-  {
-    id: '03',
-    name: 'Crafting Great Stories',
-    author: 'Gerald Gallagher',
-    description: 'Battle in the Avenue is a satisfying alternate reality thriller about a future where fuel is more than a luxury.',
-    reviewer: 'MJ Campbell',
-    date: '11/12/22'
-  },
-  {
-    id: '04',
-    name: 'Doorways to Transformation: Everyday Wisdom for the Creativity',
-    author: 'Karen Kinney',
-    description: 'Battle in the Avenue is a satisfying alternate reality thriller about a future where fuel is more than a luxury.',
-    reviewer: 'MJ Campbell',
-    date: '11/12/22'
-  },
-  {
-    id: '05',
-    name: 'RIVER WOMAN, RIVER DEMON',
-    author: 'Jennifer Givhan',
-    description: 'Battle in the Avenue is a satisfying alternate reality thriller about a future where fuel is more than a luxury.',
-    reviewer: 'MJ Campbell',
-    date: '11/12/22'
-  },
-  {
-    id: '06',
-    name: 'Kindred Spirits',
-    author: 'Eva Barker',
-    description: 'Battle in the Avenue is a satisfying alternate reality thriller about a future where fuel is more than a luxury.',
-    reviewer: 'MJ Campbell',
-    date: '11/12/22'
-  }
-]
 /* GET users listing. */
 router.get('/', async (req, res) => {
   let reviewss = await db.get().collection(collection.REVIEW_COLLECTION).find().sort({date:-1}).toArray()
   reviewss.shift()
-  let coverReview = await db.get().collection(collection.REVIEW_COLLECTION).find({}).sort({date:-1}).limit(1).toArray()
+  let coverReview = await db.get().collection(collection.REVIEW_COLLECTION).find({}).sort({date:-1}).toArray()
   review_helper.getRecentArticles().then((result) => {
     res.render('index', { recentArticles: result, coverReview: coverReview,reviews: reviewss })
   })
