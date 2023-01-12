@@ -158,9 +158,10 @@
                 $('#menu_button').removeClass('hidden')
             })
 
-            $('.deleteBtn').click(()=>{
-                var id = $('.deleteBtn').attr('data-id')
+            $('.deleteBtn').click(function(){
+                var id = $(this).data('id')
                 var url = `/admin/delete/${id}`
+                console.log(id)
                 $('.sureDlt').attr('href',url)
                 $('#popup').removeClass('hidden')
             })
